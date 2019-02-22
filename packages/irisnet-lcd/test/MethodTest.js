@@ -54,37 +54,46 @@ describe('TmModule Test', function () {
                 console.log(JSON.stringify(data))
             })
         });
+
+        it('test getBalance', function () {
+            lcd.bank.getBalance('faa1ljemm0yznz58qxxs8xyak7fashcfxf5lssn6jm').then(data => {
+                console.log(JSON.stringify(data))
+            })
+        });
     });
 
-    describe('bank stake Test', function () {
+    describe('stake module Test', function () {
+        it('test getAllDelegations', function () {
+            lcd.stake.getAllDelegations('faa1k7qa96sr8r2u8lgwg88y24rfmtkyd6alns8zrw').then(data => {
+                console.log(JSON.stringify(data))
+            })
+        });
+        it('test getAllUbd', function () {
+            lcd.stake.getAllUbd('faa1k7qa96sr8r2u8lgwg88y24rfmtkyd6alns8zrw').then(data => {
+                console.log(JSON.stringify(data))
+            })
+        });
+
+        it('test getValidatorsByDelAndVal', function () {
+            lcd.stake.getValidatorsByDelAndVal('faa1k7qa96sr8r2u8lgwg88y24rfmtkyd6alns8zrw','fva19s3t99fpwt657run9fjl03sqqaw3chlvxs22vf').then(data => {
+                console.log(JSON.stringify(data))
+            })
+        });
+    });
+
+    describe('gov module Test', function () {
 
     });
 
-    describe('bank gov Test', function () {
+    describe('slash module Test', function () {
 
     });
 
-    describe('bank slash Test', function () {
-
-    });
-
-
-
-
-    it('test getAllDelegations', function () {
-        lcd.stake.getAllDelegations('faa1k7qa96sr8r2u8lgwg88y24rfmtkyd6alns8zrw').then(data => {
-            console.log(JSON.stringify(data))
-        })
-    });
-    it('test getAllUbd', function () {
-        lcd.stake.getAllUbd('faa1k7qa96sr8r2u8lgwg88y24rfmtkyd6alns8zrw').then(data => {
-            console.log(JSON.stringify(data))
-        })
-    });
-
-    it('test getValidatorsByDelAndVal', function () {
-        lcd.stake.getValidatorsByDelAndVal('faa1k7qa96sr8r2u8lgwg88y24rfmtkyd6alns8zrw','fva19s3t99fpwt657run9fjl03sqqaw3chlvxs22vf').then(data => {
-            console.log(JSON.stringify(data))
-        })
+    describe('version module Test', function () {
+        it('test getLcdVersion', function () {
+            lcd.version.getLcdVersion().then(data => {
+                console.log(data)
+            })
+        });
     });
 });

@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetAllDelegationMethod extends AbstractMethod{
+class GetAllUbdMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/stake/delegators/{delAddr}/delegations');
+        super(host,'/stake/delegators/{delAddr}/unbonding_delegations');
     }
 
     /**
@@ -14,11 +14,11 @@ class GetAllDelegationMethod extends AbstractMethod{
      * @method beforeExecution
      *
      */
-    beforeExecution(delAddr) {
-        if(!delAddr){
+    beforeExecution(param) {
+        if(!param || param.length === 0){
             throw Error('delAddr must be not empty')
         }
-        this.path = this.path.replace('{delAddr}',delAddr)
+        this.path = this.path.replace('{delAddr}',param[0])
     }
 
 
@@ -36,4 +36,4 @@ class GetAllDelegationMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetAllDelegationMethod;
+module.exports = GetAllUbdMethod;

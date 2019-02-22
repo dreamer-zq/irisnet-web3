@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetDelegationMethod extends AbstractMethod{
+class GetAllDelegationMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'stake/delegators/{delAddr}/delegations');
+        super(host,'/stake/delegators/{delAddr}/delegations');
     }
 
     /**
@@ -14,11 +14,11 @@ class GetDelegationMethod extends AbstractMethod{
      * @method beforeExecution
      *
      */
-    beforeExecution(coinType) {
-        if(!coinType){
-            throw Error('coin-type must be not empty')
+    beforeExecution(param) {
+        if(!param || param.length === 0){
+            throw Error('delAddr must be not empty')
         }
-        this.path = this.path.replace('{coin-type}',coinType)
+        this.path = this.path.replace('{delAddr}',param[0])
     }
 
 
@@ -36,4 +36,4 @@ class GetDelegationMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetDelegationMethod;
+module.exports = GetAllDelegationMethod;

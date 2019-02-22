@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetAccountMethod extends AbstractMethod{
+class GetBalanceMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/auth/accounts/{address}');
+        super(host,'/bank/balances/{address}');
     }
 
     /**
@@ -36,4 +36,4 @@ class GetAccountMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetAccountMethod;
+module.exports = GetBalanceMethod;

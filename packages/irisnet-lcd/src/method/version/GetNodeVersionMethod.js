@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class TokenStatsMethod extends AbstractMethod{
+class GetNodeVersionMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/bank/token-stats');
+        super(host,'/node_version',{},'text');
     }
 
     /**
@@ -31,4 +31,4 @@ class TokenStatsMethod extends AbstractMethod{
     }
 }
 
-module.exports = TokenStatsMethod;
+module.exports = GetNodeVersionMethod;

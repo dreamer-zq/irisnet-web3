@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class BlockMethod extends AbstractMethod{
+class GetTxMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/blocks/{param}');
+        super(host,'/txs/{hash}');
     }
 
     /**
@@ -15,11 +15,11 @@ class BlockMethod extends AbstractMethod{
      *
      */
     beforeExecution(param) {
-        if(Number.isInteger(param)){
-            this.path = this.path.replace('{param}',param)
-        }else {
-            this.path = this.path.replace('{param}','latest')
+        if(!param || param[0] === ''){
+            throw new Error("tx hash must not be empty")
         }
+        this.path = this.path.replace('{hash}',param[0])
+
     }
 
 
@@ -37,4 +37,4 @@ class BlockMethod extends AbstractMethod{
     }
 }
 
-module.exports = BlockMethod;
+module.exports = GetTxMethod;

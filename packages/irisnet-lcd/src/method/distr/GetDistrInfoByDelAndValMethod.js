@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetSignInfoMethod extends AbstractMethod{
+class GetDistrInfoByDelAndValMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/slashing/validators/{valPubKey}/signing_info');
+        super(host,'/distribution/{delAddr}/distrInfo/{valAddr}');
     }
 
     /**
@@ -15,10 +15,11 @@ class GetSignInfoMethod extends AbstractMethod{
      *
      */
     beforeExecution(params) {
-        if(!params || params[0] === ''){
-            throw Error('valPubKey  must not be empty')
+        if(!params || params.length !== 2
+            || params[0] === '' || params[1] === ''){
+            throw Error('delAddr and valAddr  must not be empty')
         }
-        this.path = this.path.replace('{valPubKey}',params[0])
+        this.path = this.path.replace('{delAddr}',params[0]).replace('{valAddr}',params[1])
     }
 
 
@@ -36,4 +37,4 @@ class GetSignInfoMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetSignInfoMethod;
+module.exports = GetDistrInfoByDelAndValMethod;

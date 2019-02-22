@@ -14,11 +14,11 @@ class CoinTypeMethod extends AbstractMethod{
      * @method beforeExecution
      *
      */
-    beforeExecution(coinType) {
-        if(!coinType){
-            throw Error('coin-type must be not empty')
+    beforeExecution(param) {
+        if(!param || param === 0){
+            throw Error('coin-type must not be empty')
         }
-        this.path = this.path.replace('{coin-type}',coinType)
+        this.path = this.path.replace('{coin-type}',param[0])
     }
 
 

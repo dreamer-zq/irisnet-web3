@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetValidatorsMethod extends AbstractMethod{
+class GetPoolStateMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/stake/validators');
+        super(host,'/stake/pool');
     }
 
     /**
@@ -31,4 +31,4 @@ class GetValidatorsMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetValidatorsMethod;
+module.exports = GetPoolStateMethod;

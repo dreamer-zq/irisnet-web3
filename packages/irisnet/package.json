@@ -1,0 +1,19 @@
+{
+  "name": "irisnet",
+  "namespace": "irisnet-web3",
+  "version": "v0.0.1",
+  "description": "IRIS network javaScript api. This package is internally used by irisnet.",
+  "repository": "https://github.com/irisnet/irisnet-web3",
+  "license": "Apache-2.0",
+  "main": "src/index.js",
+  "scripts": {
+  },
+  "types": "types",
+  "dependencies": {
+      "irisnet-lcd": "v0.0.1"
+  },
+  "devDependencies": {
+      "chai": "^4.1.2",
+      "mocha": "^4.1.0"
+  }
+}

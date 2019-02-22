@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetDelegationsByDelAndValMethod extends AbstractMethod{
+class GetDelegationsByValMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/stake/delegators/{delAddr}/delegations/{valAddr}');
+        super(host,'/stake/validators/{valAddr}/delegations');
     }
 
     /**
@@ -15,10 +15,10 @@ class GetDelegationsByDelAndValMethod extends AbstractMethod{
      *
      */
     beforeExecution(param) {
-        if(!param || param.length < 2){
-            throw Error('delAddr and valAddr must be not empty')
+        if(!param || param.length === 0){
+            throw Error('valAddr must be not empty')
         }
-        this.path = this.path.replace('{delAddr}',param[0]).replace('{valAddr}',param[1])
+        this.path = this.path.replace('{delAddr}',param[0])
     }
 
 
@@ -36,4 +36,4 @@ class GetDelegationsByDelAndValMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetDelegationsByDelAndValMethod;
+module.exports = GetDelegationsByValMethod;

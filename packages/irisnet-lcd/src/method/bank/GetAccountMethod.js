@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class CoinTypeMethod extends AbstractMethod{
+class GetAccountMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/bank/coin/{coin-type}');
+        super(host,'/auth/accounts/{address}');
     }
 
     /**
@@ -14,11 +14,11 @@ class CoinTypeMethod extends AbstractMethod{
      * @method beforeExecution
      *
      */
-    beforeExecution(param) {
-        if(!param || param.length() === 0){
-            throw Error('coin-type must be not empty')
+    beforeExecution(params) {
+        if(!params || params.length === 0 || params[0] === ''){
+            throw Error('address must not be empty')
         }
-        this.path = this.path.replace('{coin-type}',param[0])
+        this.path = this.path.replace('{address}',params[0])
     }
 
 
@@ -36,4 +36,4 @@ class CoinTypeMethod extends AbstractMethod{
     }
 }
 
-module.exports = CoinTypeMethod;
+module.exports = GetAccountMethod;

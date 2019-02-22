@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetPoolStateMethod extends AbstractMethod{
+class GetParametersMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/stake/pool');
+        super(host,'/stake/parameters');
     }
 
     /**
@@ -31,4 +31,4 @@ class GetPoolStateMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetPoolStateMethod;
+module.exports = GetParametersMethod;

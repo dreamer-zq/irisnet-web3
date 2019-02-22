@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetValidatorsByDelAndValMethod extends AbstractMethod{
+class GetDelegationsByDelAndValMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/stake/delegators/{delAddr}/validators/{valAddr}');
+        super(host,'/stake/delegators/{delAddr}/delegations/{valAddr}');
     }
 
     /**
@@ -36,4 +36,4 @@ class GetValidatorsByDelAndValMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetValidatorsByDelAndValMethod;
+module.exports = GetDelegationsByDelAndValMethod;

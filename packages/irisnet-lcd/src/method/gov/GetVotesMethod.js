@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetDepositsMethod extends AbstractMethod{
+class GetVotesMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/gov/proposals/{pid}/deposits');
+        super(host,'/gov/proposals/{pid}/votes');
     }
 
     /**
@@ -16,7 +16,7 @@ class GetDepositsMethod extends AbstractMethod{
      */
     beforeExecution(param) {
         if(!param || !Number.isInteger(param[0])){
-
+            throw Error('proposalId  must be integer')
         }
         this.path = this.path.replace('{pid}',param[0])
     }
@@ -36,4 +36,4 @@ class GetDepositsMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetDepositsMethod;
+module.exports = GetVotesMethod;

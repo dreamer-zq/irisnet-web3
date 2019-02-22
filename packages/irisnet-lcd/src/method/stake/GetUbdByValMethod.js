@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetUbdByDelAndValMethod extends AbstractMethod{
+class GetUbdByValMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/stake/delegators/{delAddr}/unbonding_delegations/{valAddr}');
+        super(host,'/stake/validators/{valAddr}/unbonding_delegations');
     }
 
     /**
@@ -15,7 +15,7 @@ class GetUbdByDelAndValMethod extends AbstractMethod{
      *
      */
     beforeExecution(param) {
-        if(!param || param.length < 2){
+        if(!param || param.length === 0){
             throw Error('delAddr and valAddr must be not empty')
         }
         this.path = this.path.replace('{delAddr}',param[0]).replace('{valAddr}',param[1])
@@ -36,4 +36,4 @@ class GetUbdByDelAndValMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetUbdByDelAndValMethod;
+module.exports = GetUbdByValMethod;

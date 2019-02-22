@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetValidatorsByDelMethod extends AbstractMethod{
+class GetValidatorsByDelAndValMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/stake/delegators/{delAddr}/validators');
+        super(host,'/stake/delegators/{delAddr}/validators/{valAddr}');
     }
 
     /**
@@ -15,10 +15,10 @@ class GetValidatorsByDelMethod extends AbstractMethod{
      *
      */
     beforeExecution(param) {
-        if(!param || param.length() === 0){
-            throw Error('delAddr must be not empty')
+        if(!param || param.length < 2){
+            throw Error('delAddr and valAddr must be not empty')
         }
-        this.path = this.path.replace('{delAddr}',param[0])
+        this.path = this.path.replace('{delAddr}',param[0]).replace('{valAddr}',param[1])
     }
 
 
@@ -36,4 +36,4 @@ class GetValidatorsByDelMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetValidatorsByDelMethod;
+module.exports = GetValidatorsByDelAndValMethod;

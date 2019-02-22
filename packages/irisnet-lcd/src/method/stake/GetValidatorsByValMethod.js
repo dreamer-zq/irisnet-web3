@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetValidatorsMethod extends AbstractMethod{
+class GetValidatorsByValMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/stake/validators');
+        super(host,'/stake/validators/{valAddr}');
     }
 
     /**
@@ -14,7 +14,12 @@ class GetValidatorsMethod extends AbstractMethod{
      * @method beforeExecution
      *
      */
-    beforeExecution(param) {}
+    beforeExecution(param) {
+        if(!param || param.length === 0){
+            throw Error('valAddr must be not empty')
+        }
+        this.path = this.path.replace('{valAddr}',param[0])
+    }
 
 
     /**
@@ -31,4 +36,4 @@ class GetValidatorsMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetValidatorsMethod;
+module.exports = GetValidatorsByValMethod;

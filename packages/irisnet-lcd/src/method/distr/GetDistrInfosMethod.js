@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetDistrInfoByDelAndValMethod extends AbstractMethod{
+class GetDistrInfosMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/distribution/{delAddr}/distrInfo/{valAddr}');
+        super(host,'/distribution/{delAddr}/distrInfos');
     }
 
     /**
@@ -15,11 +15,11 @@ class GetDistrInfoByDelAndValMethod extends AbstractMethod{
      *
      */
     beforeExecution(params) {
-        if(!params || params.length !== 2
-            || params[0] === '' || params[1] === ''){
-            throw Error('delAddr and valAddr  must not be empty')
+        if(!params || params.length !== 1
+            || params[0] === ''){
+            throw Error('delAddr must not be empty')
         }
-        this.path = this.path.replace('{delAddr}',params[0]).replace('{valAddr}',params[1])
+        this.path = this.path.replace('{delAddr}',params[0])
     }
 
 
@@ -37,4 +37,4 @@ class GetDistrInfoByDelAndValMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetDistrInfoByDelAndValMethod;
+module.exports = GetDistrInfosMethod;

@@ -1,5 +1,5 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class ValidatorSet extends AbstractMethod{
+class ValidatorSetMethod extends AbstractMethod{
     /**
      *
      * @constructor
@@ -15,7 +15,7 @@ class ValidatorSet extends AbstractMethod{
      *
      */
     beforeExecution(param) {
-        if(Number.isInteger(param)){
+        if(param && Number.isInteger(param[0])){
             this.path = this.path.replace('{param}',param)
         }else {
             this.path = this.path.replace('{param}','latest')
@@ -37,4 +37,4 @@ class ValidatorSet extends AbstractMethod{
     }
 }
 
-module.exports = BlockMethod;
+module.exports = ValidatorSetMethod;

@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetRedelegationByDelMethod extends AbstractMethod{
+class GetRedelegationByValMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/stake/delegators/{delAddr}/redelegations');
+        super(host,'/stake/validators/{valAddr}/redelegations');
     }
 
     /**
@@ -15,10 +15,10 @@ class GetRedelegationByDelMethod extends AbstractMethod{
      *
      */
     beforeExecution(param) {
-        if(!param || param.length() === 0){
-            throw Error('delAddr must be not empty')
+        if(!param || param.length === 0){
+            throw Error('valAddr must be not empty')
         }
-        this.path = this.path.replace('{delAddr}',param[0])
+        this.path = this.path.replace('{valAddr}',param[0])
     }
 
 
@@ -36,4 +36,4 @@ class GetRedelegationByDelMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetRedelegationByDelMethod;
+module.exports = GetRedelegationByValMethod;

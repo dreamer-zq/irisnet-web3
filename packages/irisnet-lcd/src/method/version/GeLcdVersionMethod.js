@@ -1,11 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class GetNodeVersionMethod extends AbstractMethod{
+class GeLcdVersionMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/node_version');
+        super(host,'/node_version',{},'text');
     }
 
     /**
@@ -31,4 +31,4 @@ class GetNodeVersionMethod extends AbstractMethod{
     }
 }
 
-module.exports = GetNodeVersionMethod;
+module.exports = GeLcdVersionMethod;
