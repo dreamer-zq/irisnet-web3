@@ -71,7 +71,7 @@ class BroadcastTxMethod extends AbstractMethod{
             if(data.deliver_tx && data.deliver_tx.code > 0){
                 throw new Error(data.deliver_tx.log)
             }
-            return response.hash
+            return data.hash
         });
     }
 }
