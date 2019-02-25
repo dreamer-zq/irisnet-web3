@@ -35,11 +35,11 @@ class Lcd {
             },
 
             getCoinType :(coinType) => {
-                return proxy.execute(Method.CoinTypeMethod,coinType);
+                return proxy.execute(Method.GetCoinTypeMethod,coinType);
             },
 
             getTokenStats :() => {
-                return proxy.execute(Method.TokenStatsMethod);
+                return proxy.execute(Method.GetTokenStatsMethod);
             },
 
             getAccount :(address) => {

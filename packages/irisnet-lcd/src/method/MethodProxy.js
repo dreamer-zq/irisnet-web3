@@ -4,8 +4,8 @@ const GetNodeStateMethod = require('./tm/GetNodeStateMethod');
 const GetValidatorSetMethod = require('./tm/GetValidatorSetMethod');
 const GetTxMethod = require('./tm/GetTxMethod');
 const BroadcastTxMethod = require('./bank/BroadcastTxMethod');
-const CoinTypeMethod = require('./bank/CoinTypeMethod');
-const TokenStatsMethod = require('./bank/TokenStatsMethod');
+const GetCoinTypeMethod = require('./bank/GetCoinTypeMethod');
+const GetTokenStatsMethod = require('./bank/GetTokenStatsMethod');
 const GetAccountMethod = require('./bank/GetAccountMethod');
 const GetBalanceMethod = require('./bank/GetBalanceMethod');
 const GetAllDelegationMethod = require('./stake/GetAllDelegationMethod');
@@ -54,8 +54,8 @@ class MethodProxy {
 
         //bank module
         methods.set(Method.BroadcastTxMethod,new BroadcastTxMethod(host));
-        methods.set(Method.CoinTypeMethod,new CoinTypeMethod(host));
-        methods.set(Method.TokenStatsMethod,new TokenStatsMethod(host));
+        methods.set(Method.GetCoinTypeMethod,new GetCoinTypeMethod(host));
+        methods.set(Method.GetTokenStatsMethod,new GetTokenStatsMethod(host));
         methods.set(Method.GetAccountMethod,new GetAccountMethod(host));
         methods.set(Method.GetBalanceMethod,new GetBalanceMethod(host));
 
@@ -116,9 +116,9 @@ Method.GetNodeStateMethod = 'GetNodeStateMethod';
 Method.GetValidatorSetMethod = 'GetValidatorSetMethod';
 Method.GetTxMethod = 'GetTxMethod';
 Method.BroadcastTxMethod = 'BroadcastTxMethod';
-Method.CoinTypeMethod = 'CoinTypeMethod';
+Method.GetCoinTypeMethod = 'GetCoinTypeMethod';
 Method.GetAccountMethod = 'GetAccountMethod';
-Method.TokenStatsMethod = 'TokenStatsMethod';
+Method.GetTokenStatsMethod = 'GetTokenStatsMethod';
 Method.GetAllDelegationMethod = 'GetAllDelegationMethod';
 Method.GetAllUbdMethod = 'GetAllUbdMethod';
 Method.GetRedelegationByDelMethod = 'GetRedelegationFromDelMethod';
