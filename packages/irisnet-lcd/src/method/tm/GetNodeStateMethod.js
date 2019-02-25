@@ -1,11 +1,12 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class BlockMethod extends AbstractMethod{
+
+class GetNodeStateMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/blocks/{param}');
+        super(host,'/syncing');
     }
 
     /**
@@ -14,14 +15,7 @@ class BlockMethod extends AbstractMethod{
      * @method beforeExecution
      *
      */
-    beforeExecution(param) {
-        if(param && Number.isInteger(param[0])){
-            this.path = this.path.replace('{param}',param[0])
-        }else {
-            this.path = this.path.replace('{param}','latest')
-        }
-    }
-
+    beforeExecution(param) {}
 
     /**
      * This method will be executed after the RPC request.
@@ -37,4 +31,4 @@ class BlockMethod extends AbstractMethod{
     }
 }
 
-module.exports = BlockMethod;
+module.exports = GetNodeStateMethod;

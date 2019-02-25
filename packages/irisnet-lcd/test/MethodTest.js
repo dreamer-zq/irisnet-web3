@@ -1,6 +1,9 @@
 const chai = require('chai');
 const Lcd = require('../src/index');
 
+const expect = chai.expect;
+const assert = chai.assert;
+
 
 describe('TmModule Test', function () {
     let lcd = new Lcd('http://192.168.150.7:30317');
@@ -8,32 +11,32 @@ describe('TmModule Test', function () {
     describe('tm module Test', function () {
         it('test NodeInfoMethod', function () {
             lcd.tm.getNodeInfo().then(data => {
-                console.log(JSON.stringify(data))
+                expect(data).to.be.an('object');
             })
         });
 
         it('test GetBlock', function () {
             lcd.tm.getBlock().then(data => {
-                console.log(JSON.stringify(data))
+                expect(data).to.be.an('object');
             })
         });
 
         it('test GetTx', function () {
             lcd.tm.getTx('61EE65387A1848D292D0208B6A488D09568E3F06BB66C7D50C190A517EC9AFA5').then(data => {
-                console.log(data)
+                expect(data.hash).equal('61EE65387A1848D292D0208B6A488D09568E3F06BB66C7D50C190A517EC9AFA5')
             })
         });
     });
 
     describe('bank module Test', function () {
-        it('test Broadcast', function () {
+        it('test broadcast', function () {
             let tx = {"tx":{"msg":[{"type":"irishub/bank/Send","value":{"type":"irishub/bank/Send","inputs":[{"address":"faa1ljemm0yznz58qxxs8xyak7fashcfxf5lssn6jm","coins":[{"denom":"iris-atto","amount":"10000000000000000000"}]}],"outputs":[{"address":"faa1eqvkfthtrr93g4p9qspp54w6dtjtrn279vcmpn","coins":[{"denom":"iris-atto","amount":"10000000000000000000"}]}]}}],"fee":{"amount":[{"denom":"iris-atto","amount":"1200000000000000000"}],"gas":"20000"},"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"Atu8+OXAdnE5z6Hm39xBdBcYP2ad235ThAwe6XMd4m/d"},"signature":"JT0/nEDElnaqYDpUUB4tsW/a14sHdJjgpMp1XDE0Ftxyg0MAJhUmgqIkzOKphzIqhI7aG5OnqEkYhEKFq9xQfg==","account_number":"4","sequence":"2"}],"memo":"1"}};
 
             lcd.bank.broadcast(tx).then(data => {
-                console.log(data)
+                assert.notEqual(data.hash,'')
             }).catch(err => {
                 let errMsg = err.message;
-                console.log(errMsg)
+                assert.notEqual(errMsg,'')
             })
         });
 

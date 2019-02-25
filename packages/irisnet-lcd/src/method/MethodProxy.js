@@ -1,7 +1,7 @@
-const NodeInfoMethod = require('./tm/NodeInfoMethod');
-const BlockMethod = require('./tm/BlockMethod');
-const SyncingMethod = require('./tm/SyncingMethod');
-const ValidatorSetMethod = require('./tm/ValidatorSetMethod');
+const GetNodeInfoMethod = require('./tm/GetNodeInfoMethod');
+const GetBlockMethod = require('./tm/GetBlockMethod');
+const GetNodeStateMethod = require('./tm/GetNodeStateMethod');
+const GetValidatorSetMethod = require('./tm/GetValidatorSetMethod');
 const GetTxMethod = require('./tm/GetTxMethod');
 const BroadcastTxMethod = require('./bank/BroadcastTxMethod');
 const CoinTypeMethod = require('./bank/CoinTypeMethod');
@@ -46,10 +46,10 @@ class MethodProxy {
     constructor(host) {
         let methods = new Map();
         //tm module
-        methods.set(Method.NodeInfoMethod,new NodeInfoMethod(host));
-        methods.set(Method.BlockMethod,new BlockMethod(host));
-        methods.set(Method.SyncingMethod,new SyncingMethod(host));
-        methods.set(Method.ValidatorSetMethod,new ValidatorSetMethod(host));
+        methods.set(Method.GetNodeInfoMethod,new GetNodeInfoMethod(host));
+        methods.set(Method.GetBlockMethod,new GetBlockMethod(host));
+        methods.set(Method.GetNodeStateMethod,new GetNodeStateMethod(host));
+        methods.set(Method.GetValidatorSetMethod,new GetValidatorSetMethod(host));
         methods.set(Method.GetTxMethod,new GetTxMethod(host));
 
         //bank module
@@ -110,10 +110,10 @@ class MethodProxy {
 }
 
 class Method{}
-Method.NodeInfoMethod = 'NodeInfoMethod';
-Method.BlockMethod = 'BlockMethod';
-Method.SyncingMethod = 'SyncingMethod';
-Method.ValidatorSetMethod = 'ValidatorSetMethod';
+Method.GetNodeInfoMethod = 'GetNodeInfoMethod';
+Method.GetBlockMethod = 'GetBlockMethod';
+Method.GetNodeStateMethod = 'GetNodeStateMethod';
+Method.GetValidatorSetMethod = 'GetValidatorSetMethod';
 Method.GetTxMethod = 'GetTxMethod';
 Method.BroadcastTxMethod = 'BroadcastTxMethod';
 Method.CoinTypeMethod = 'CoinTypeMethod';

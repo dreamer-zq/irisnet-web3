@@ -1,5 +1,5 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-class ValidatorSetMethod extends AbstractMethod{
+class GetValidatorSetMethod extends AbstractMethod{
     /**
      *
      * @constructor
@@ -37,4 +37,4 @@ class ValidatorSetMethod extends AbstractMethod{
     }
 }
 
-module.exports = ValidatorSetMethod;
+module.exports = GetValidatorSetMethod;

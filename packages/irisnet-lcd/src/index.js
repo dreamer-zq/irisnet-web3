@@ -9,19 +9,19 @@ class Lcd {
         let proxy = new MethodProxy(host);
         this.tm = {
             getNodeInfo :() => {
-                return proxy.execute(Method.NodeInfoMethod);
+                return proxy.execute(Method.GetNodeInfoMethod);
             },
 
             getBlock :(param) => {
-                return proxy.execute(Method.BlockMethod,param);
+                return proxy.execute(Method.GetBlockMethod,param);
             },
 
-            getState :() => {
-                return proxy.execute(Method.SyncingMethod);
+            getNodeState :() => {
+                return proxy.execute(Method.GetNodeStateMethod);
             },
 
             getValidators :(param) => {
-                return proxy.execute(Method.ValidatorSetMethod,param);
+                return proxy.execute(Method.GetValidatorSetMethod,param);
             },
 
             getTx :(hash) => {

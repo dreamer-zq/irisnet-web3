@@ -1,12 +1,11 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
-
-class NodeInfoMethod extends AbstractMethod{
+class GetBlockMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/node_info');
+        super(host,'/blocks/{param}');
     }
 
     /**
@@ -15,7 +14,14 @@ class NodeInfoMethod extends AbstractMethod{
      * @method beforeExecution
      *
      */
-    beforeExecution(param) {}
+    beforeExecution(param) {
+        if(param && Number.isInteger(param[0])){
+            this.path = this.path.replace('{param}',param[0])
+        }else {
+            this.path = this.path.replace('{param}','latest')
+        }
+    }
+
 
     /**
      * This method will be executed after the RPC request.
@@ -31,4 +37,4 @@ class NodeInfoMethod extends AbstractMethod{
     }
 }
 
-module.exports = NodeInfoMethod;
+module.exports = GetBlockMethod;

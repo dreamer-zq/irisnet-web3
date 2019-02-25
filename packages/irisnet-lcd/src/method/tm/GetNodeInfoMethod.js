@@ -1,12 +1,12 @@
 const AbstractMethod = require('../../lib/AbstractMethod');
 
-class SyncingMethod extends AbstractMethod{
+class GetNodeInfoMethod extends AbstractMethod{
     /**
      *
      * @constructor
      */
     constructor(host) {
-        super(host,'/syncing');
+        super(host,'/node_info');
     }
 
     /**
@@ -31,4 +31,4 @@ class SyncingMethod extends AbstractMethod{
     }
 }
 
-module.exports = SyncingMethod;
+module.exports = GetNodeInfoMethod;
