@@ -33,7 +33,7 @@ describe('TmModule Test', function () {
             let tx = {"tx":{"msg":[{"type":"irishub/bank/Send","value":{"type":"irishub/bank/Send","inputs":[{"address":"faa1ljemm0yznz58qxxs8xyak7fashcfxf5lssn6jm","coins":[{"denom":"iris-atto","amount":"10000000000000000000"}]}],"outputs":[{"address":"faa1eqvkfthtrr93g4p9qspp54w6dtjtrn279vcmpn","coins":[{"denom":"iris-atto","amount":"10000000000000000000"}]}]}}],"fee":{"amount":[{"denom":"iris-atto","amount":"1200000000000000000"}],"gas":"20000"},"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"Atu8+OXAdnE5z6Hm39xBdBcYP2ad235ThAwe6XMd4m/d"},"signature":"JT0/nEDElnaqYDpUUB4tsW/a14sHdJjgpMp1XDE0Ftxyg0MAJhUmgqIkzOKphzIqhI7aG5OnqEkYhEKFq9xQfg==","account_number":"4","sequence":"2"}],"memo":"1"}};
 
             lcd.bank.broadcast(tx).then(data => {
-                assert.notEqual(data.hash,'')
+                assert.isNotNull(data.hash)
             }).catch(err => {
                 let errMsg = err.message;
                 assert.notEqual(errMsg,'')
@@ -85,7 +85,11 @@ describe('TmModule Test', function () {
     });
 
     describe('gov module Test', function () {
-
+        it('test getProposals', function () {
+            lcd.gov.getProposals().then(data => {
+                console.log(JSON.stringify(data))
+            })
+        });
     });
 
     describe('slash module Test', function () {

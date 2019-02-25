@@ -16,14 +16,14 @@ class GetProposalsMethod extends AbstractMethod{
      */
     beforeExecution(params) {
         let path = this.path;
-        if(!params || params !== 4){
+        if(!params || params.length !== 4){
             throw Error('params length must be equals 4')
         }
 
-        let voter = params[0];
-        let depositor = params[1];
-        let status = params[2];
-        let limit = params[3];
+        let voter = params[0] || '';
+        let depositor = params[1] || '';
+        let status = params[2] || '';
+        let limit = params[3] || '';
 
         if (voter === '' && depositor === '' && status === '' && limit === ''){
             return

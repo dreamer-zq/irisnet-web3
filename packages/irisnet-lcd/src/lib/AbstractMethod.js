@@ -5,7 +5,7 @@ class AbstractMethod {
      *
      * @constructor
      */
-    constructor(host,path,option = {},respType) {
+    constructor(host,path,option = {},respType = 'json') {
         this.path = path;
         this.option = option;
         this._host = host;
@@ -45,15 +45,16 @@ class AbstractMethod {
         this.beforeExecution(param);
         let url = this._host + this.path;
         return fetch(url,this.option).then(response => {
-            if (response.status === 200) {
-                let result = '';
-                if(this._respType === 'text'){
-                    result = response.text();
-                }else{
-                    result = response.json();
-                }
-                return this.afterExecution(result);
+            if (!response.ok) {
+                throw new Error(`httpCode:${response.status},msg:${response.statusText}`)
             }
+            let result = '';
+            if(this._respType === 'text'){
+                result = response.text();
+            }else{
+                result = response.json();
+            }
+            return this.afterExecution(result);
         });
     }
 }

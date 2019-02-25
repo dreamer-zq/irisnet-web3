@@ -30,8 +30,8 @@ class Lcd {
         };
 
         this.bank = {
-            broadcast :(tx) => {
-                return proxy.execute(Method.BroadcastTxMethod,tx);
+            broadcast :(tx,async,simulate) => {
+                return proxy.execute(Method.BroadcastTxMethod,tx,async,simulate);
             },
 
             getCoinType :(coinType) => {

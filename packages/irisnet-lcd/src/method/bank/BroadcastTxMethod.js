@@ -18,11 +18,11 @@ class BroadcastTxMethod extends AbstractMethod{
      * @method beforeExecution
      *
      */
-    beforeExecution(param) {
-        if(!param || param === 0){
+    beforeExecution(params) {
+        if(!params || params.length !== 3){
             throw Error('param tx is undefined')
         }
-        let tx = param[0].tx;
+        let tx = params[0].tx;
         if(!tx.msg || tx.msg.length === 0){
             throw Error('tx.msg must be greater than zero')
         }
@@ -32,7 +32,25 @@ class BroadcastTxMethod extends AbstractMethod{
         if(!tx.signatures || tx.signatures.length === 0){
             throw Error('tx.signatures must be not empty')
         }
-        this.option.body = JSON.stringify(param)
+        this.option.body = JSON.stringify(params[0]);
+
+
+        let async = params[1] || '';
+        let simulate = params[2] || '';
+        if(async === '' && simulate === ''){
+            return
+        }
+
+        let path = this.path + '?';
+        if (async !== ''){
+            path = `${path}async=${async}&`
+        }
+        if (simulate !== ''){
+            path = `${path}simulate=${simulate}&`
+        }
+
+        this.path = path
+
     }
 
 
