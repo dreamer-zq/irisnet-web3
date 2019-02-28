@@ -18,7 +18,7 @@ class GetDelegationsByValMethod extends AbstractMethod{
         if(!param || param.length === 0){
             throw Error('valAddr must be not empty')
         }
-        this.path = this.path.replace('{delAddr}',param[0])
+        this.path = this.path.replace('{valAddr}',param[0])
     }
 
 

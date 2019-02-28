@@ -18,7 +18,7 @@ class GetUbdByValMethod extends AbstractMethod{
         if(!param || param.length === 0){
             throw Error('delAddr and valAddr must be not empty')
         }
-        this.path = this.path.replace('{delAddr}',param[0]).replace('{valAddr}',param[1])
+        this.path = this.path.replace('{valAddr}',param[0])
     }
 
 
