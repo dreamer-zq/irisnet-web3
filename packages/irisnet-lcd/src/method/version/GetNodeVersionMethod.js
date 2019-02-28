@@ -5,7 +5,7 @@ class GetNodeVersionMethod extends AbstractMethod{
      * @constructor
      */
     constructor(host) {
-        super(host,'/node_version',{},'text');
+        super(host,'/node_version');
     }
 
     /**

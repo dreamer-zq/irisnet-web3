@@ -5,11 +5,26 @@ class AbstractMethod {
      *
      * @constructor
      */
-    constructor(host,path,option = {},respType = 'json') {
-        this.path = path;
-        this.option = option;
+    constructor(host,path,option = {}) {
+        this._path = path;
+        this._option = option;
         this._host = host;
-        this._respType = respType;
+    }
+
+    set option(value){
+        this._option = value;
+    }
+
+    get option(){
+        return this._option
+    }
+
+    set path(path){
+        this._path = path;
+    }
+
+    get path(){
+        return this._path
     }
 
     /**
@@ -46,16 +61,21 @@ class AbstractMethod {
         let url = this._host + this.path;
         return fetch(url,this.option).then(response => {
             if (!response.ok) {
-                throw new Error(`httpCode:${response.status},msg:${response.statusText}`)
+                return Promise.reject(response.text().then(msg => {
+                    return msg;
+                }))
             }
+            let contentType = response.headers.get('content-type');
             let result = '';
-            if(this._respType === 'text'){
+            if(contentType.includes('text/plain')){
                 result = response.text();
-            }else{
+            }else if(contentType.includes('application/json')){
                 result = response.json();
             }
             return this.afterExecution(result);
-        });
+        }).catch(err =>{
+            return Promise.reject(err)
+        })
     }
 }
 

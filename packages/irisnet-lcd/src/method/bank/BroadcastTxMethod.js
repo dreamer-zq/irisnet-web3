@@ -19,9 +19,6 @@ class BroadcastTxMethod extends AbstractMethod{
      *
      */
     beforeExecution(params) {
-        if(!params || params.length !== 3){
-            throw Error('param tx is undefined')
-        }
         let tx = params[0].tx;
         if(!tx.msg || tx.msg.length === 0){
             throw Error('tx.msg must be greater than zero')
@@ -34,22 +31,9 @@ class BroadcastTxMethod extends AbstractMethod{
         }
         this.option.body = JSON.stringify(params[0]);
 
-
-        let async = params[1] || '';
-        let simulate = params[2] || '';
-        if(async === '' && simulate === ''){
-            return
-        }
-
-        let path = this.path + '?';
-        if (async !== ''){
-            path = `${path}async=${async}&`
-        }
-        if (simulate !== ''){
-            path = `${path}simulate=${simulate}&`
-        }
-
-        this.path = path
+        let async = params[1] || false;
+        let simulate = params[2] || false;
+        this.path = `${this.path}?async=${async}&simulate=${simulate}`
 
     }
 
@@ -64,15 +48,7 @@ class BroadcastTxMethod extends AbstractMethod{
      * @returns {*}
      */
     afterExecution(response) {
-        return response.then( data => {
-            if(data.check_tx && data.check_tx.code > 0){
-                throw new Error(data.check_tx.log)
-            }
-            if(data.deliver_tx && data.deliver_tx.code > 0){
-                throw new Error(data.deliver_tx.log)
-            }
-            return data.hash
-        });
+        return response;
     }
 }
 

@@ -16,8 +16,8 @@ class GetProposalsMethod extends AbstractMethod{
      */
     beforeExecution(params) {
         let path = this.path;
-        if(!params || params.length !== 4){
-            throw Error('params length must be equals 4')
+        if(!params){
+            return
         }
 
         let voter = params[0] || '';
