@@ -2,10 +2,9 @@ class ModuleProxy {
     /**
      *
      * @constructor
-     * @param {string} host
      * @param {AbstractModuleFactory} moduleFactory
      */
-    constructor(host,moduleFactory) {
+    constructor(moduleFactory) {
         return new Proxy(this, {
             get: (target, name) => {
                 if (moduleFactory.hasMethod(name)) {

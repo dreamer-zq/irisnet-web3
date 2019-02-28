@@ -43,7 +43,7 @@ class AbstractModuleFactory {
     /**
      * Checks if the method exists
      *
-     * @method hasMethodModel
+     * @method hasMethod
      *
      * @param {String} name
      *

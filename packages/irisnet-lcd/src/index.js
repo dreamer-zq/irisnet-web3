@@ -15,13 +15,13 @@ class Lcd {
      * @constructor
      */
     constructor(host) {
-        this.tm = new ModuleProxy(host, new TmModuleFactory(host));
-        this.bank = new ModuleProxy(host, new BankModuleFactory(host));
-        this.stake = new ModuleProxy(host, new StakeModuleFactory(host));
-        this.gov = new ModuleProxy(host, new GovModuleFactory(host));
-        this.slash = new ModuleProxy(host, new SlashModuleFactory(host));
-        this.distr = new ModuleProxy(host, new DistrModuleFactory(host));
-        this.version = new ModuleProxy(host, new VersionModuleFactory(host))
+        this.tm = new ModuleProxy(new TmModuleFactory(host));
+        this.bank = new ModuleProxy(new BankModuleFactory(host));
+        this.stake = new ModuleProxy(new StakeModuleFactory(host));
+        this.gov = new ModuleProxy(new GovModuleFactory(host));
+        this.slash = new ModuleProxy(new SlashModuleFactory(host));
+        this.distr = new ModuleProxy(new DistrModuleFactory(host));
+        this.version = new ModuleProxy(new VersionModuleFactory(host))
     }
 }
 
