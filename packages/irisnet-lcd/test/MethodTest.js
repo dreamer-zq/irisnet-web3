@@ -210,7 +210,7 @@ describe('TmModule Test', function () {
             })
         });
         it('test getPoolState', function () {
-            lcd.stake.getPoolState('fva107kadfra85jplpqzmp8xpw2k5jmkexjkegveku').then(data => {
+            lcd.stake.getPoolState().then(data => {
                 assert.isNotNull(data)
             }).catch(err => {
                 err.then(data => {
@@ -219,7 +219,7 @@ describe('TmModule Test', function () {
             })
         });
         it('test getParameters', function () {
-            lcd.stake.getParameters('fva107kadfra85jplpqzmp8xpw2k5jmkexjkegveku').then(data => {
+            lcd.stake.getParameters().then(data => {
                 assert.isNotNull(data)
             }).catch(err => {
                 err.then(data => {
@@ -250,7 +250,7 @@ describe('TmModule Test', function () {
             lcd.version.getLcdVersion().then(data => {
                 assert.isNotNull(data)
             }).catch(err => {
-                console.log('getLcdVersion',err)
+                console.log('getLcdVersion',err);
                 return err
             })
         });

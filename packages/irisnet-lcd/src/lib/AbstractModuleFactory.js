@@ -11,7 +11,6 @@ class AbstractModuleFactory {
      */
     constructor(host) {
         this._host = host;
-        this._methods = null;
     }
 
     /**
@@ -67,6 +66,29 @@ class AbstractModuleFactory {
             return new method(this._host);
         }
     }
-}
-module.exports = AbstractModuleFactory;
 
+    /**
+     *
+     * Returns an Proxy
+     *
+     * @param {String} name
+     *
+     * @returns {AbstractModuleFactory}
+     */
+    createModule() {
+        return new Proxy(this, {
+            get: (target, name) => {
+                if (this.hasMethod(name)) {
+                    const method = this.createMethod(name);
+                    let fn = function (...args) {
+                        return method.execute(args);
+                    };
+                    return fn;
+                }
+                return target[name];
+            }
+        })
+    }
+}
+
+module.exports = AbstractModuleFactory;

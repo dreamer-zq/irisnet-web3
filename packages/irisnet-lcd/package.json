@@ -7,14 +7,21 @@
   "license": "Apache-2.0",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "dtslint": "dtslint types --onlyTestTsNext"
   },
   "types": "types",
   "dependencies": {
-      "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
-      "chai": "^4.1.2",
-      "mocha": "^4.1.0"
-  }
+    "chai": "^4.1.2",
+    "dtslint": "^0.5.3",
+    "mocha": "^4.1.0",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
+  },
+  "files": [
+    "types/index.d.ts"
+  ]
 }

@@ -1,4 +1,3 @@
-const ModuleProxy = require('./proxy/ModuleProxy');
 const {
     TmModuleFactory,
     BankModuleFactory,
@@ -15,13 +14,13 @@ class Lcd {
      * @constructor
      */
     constructor(host) {
-        this.tm = new ModuleProxy(new TmModuleFactory(host));
-        this.bank = new ModuleProxy(new BankModuleFactory(host));
-        this.stake = new ModuleProxy(new StakeModuleFactory(host));
-        this.gov = new ModuleProxy(new GovModuleFactory(host));
-        this.slash = new ModuleProxy(new SlashModuleFactory(host));
-        this.distr = new ModuleProxy(new DistrModuleFactory(host));
-        this.version = new ModuleProxy(new VersionModuleFactory(host))
+        this.tm = new TmModuleFactory(host).createModule();
+        this.bank = new BankModuleFactory(host).createModule();
+        this.stake = new StakeModuleFactory(host).createModule();
+        this.gov = new GovModuleFactory(host).createModule();
+        this.slash = new SlashModuleFactory(host).createModule();
+        this.distr = new DistrModuleFactory(host).createModule();
+        this.version = new VersionModuleFactory(host).createModule();
     }
 }
 

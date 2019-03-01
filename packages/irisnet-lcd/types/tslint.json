@@ -1,0 +1,12 @@
+{
+    "rules": {
+        "semicolon": false,
+        "no-import-default-of-export-equals": false,
+        "file-name-casing": [true, "kebab-case"],
+        "whitespace": false,
+        "no-unnecessary-class": false,
+        "unified-signatures": false,
+        "no-var-keyword": true,
+        "quotemark": true
+    }
+}
